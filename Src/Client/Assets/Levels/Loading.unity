@@ -1386,9 +1386,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa63750ae2b68d54da644735793d7db6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loginBtn: {fileID: 0}
-  username: {fileID: 0}
-  password: {fileID: 0}
+  loginBtn: {fileID: 812818413}
+  username: {fileID: 753956147}
+  password: {fileID: 1787861181}
 --- !u!1 &582322191
 GameObject:
   m_ObjectHideFlags: 0
@@ -2096,7 +2096,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 526364207}
         m_MethodName: OnClickLogin
         m_Mode: 1
         m_Arguments:

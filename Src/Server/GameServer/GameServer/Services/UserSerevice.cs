@@ -16,6 +16,7 @@ namespace GameServer.Services
         public UserService()
         {
             MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserRegisterRequest>(this.OnRegister);
+            MessageDistributer<NetConnection<NetSession>>.Instance.Subscribe<UserLoginRequest>(this.OnLogin);
         }
 
         public void Init()
@@ -48,6 +49,35 @@ namespace GameServer.Services
 
             byte[] data = PackageHandler.PackMessage(message);
             sender.SendData(data, 0, data.Length);
+        }
+
+        void OnLogin(NetConnection<NetSession>sender, UserLoginRequest loginRequest)
+        {
+            Log.InfoFormat("UserLoginRequest: userName:{0},passWord:{1}", loginRequest.User, loginRequest.Passward);
+            NetMessage message = new NetMessage();
+            message.Response = new NetMessageResponse();
+            message.Response.userLogin = new UserLoginResponse();
+            TUser user = DBService.Instance.Entities.Users.Where(u => u.Username == loginRequest.User).FirstOrDefault();
+            if (user == null)
+            {
+                message.Response.userLogin.Result = Result.Failed;
+                message.Response.userLogin.Errormsg = "用户名不存在，请注册";
+            }
+            else
+            {
+                if (user.Password != loginRequest.Passward)
+                {
+                    message.Response.userLogin.Result = Result.Failed;
+                    message.Response.userLogin.Errormsg = "密码错误";
+                }
+                else
+                {
+                    message.Response.userLogin.Result = Result.Success;
+                    message.Response.userLogin.Errormsg = "None";
+                }
+            }
+            byte[] data = PackageHandler.PackMessage(message);
+            sender.SendData(data,0,data.Length);
         }
     }
 }

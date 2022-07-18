@@ -17,7 +17,6 @@ public class LoadingManager : MonoBehaviour {
     public Text progressText;
     public Text progressNumber;
 
-    // Use this for initialization
     IEnumerator Start()
     {
         log4net.Config.XmlConfigurator.ConfigureAndWatch(new System.IO.FileInfo("log4net.xml"));
@@ -32,7 +31,6 @@ public class LoadingManager : MonoBehaviour {
         UILoading.SetActive(true);
         yield return new WaitForSeconds(1f);
         UITips.SetActive(false);
-
         //yield return DataManager.Instance.LoadData();
 
         //Init basic services
