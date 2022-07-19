@@ -79,7 +79,14 @@ namespace Services
         {
             if (this.pendingMessage != null)
             {
-                if (this.pendingMessage.Request.userRegister!=null)
+                if (this.pendingMessage.Request.userLogin!=null)
+                {
+                    if (this.OnLogin != null)
+                    {
+                        this.OnLogin(Result.Failed, string.Format("服务器断开！\n RESULT:{0} ERROR:{1}", result, reason));
+                    }
+                }
+                else if(this.pendingMessage.Request.userRegister!=null)
                 {
                     if (this.OnRegister != null)
                     {
@@ -145,6 +152,10 @@ namespace Services
         void OnUserLogin(object sender, UserLoginResponse response)
         {
             Debug.LogFormat("OnUserLogin:{0} [{1}]", response.Result, response.Errormsg);
+            if (response.Result == Result.Success)
+            {//登陆成功逻辑
+                Models.User.Instance.SetupUserInfo(response.Userinfo);
+            };
             if (this.OnLogin != null)
             {
                 this.OnLogin(response.Result, response.Errormsg);

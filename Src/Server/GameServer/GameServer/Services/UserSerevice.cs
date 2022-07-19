@@ -63,19 +63,30 @@ namespace GameServer.Services
                 message.Response.userLogin.Result = Result.Failed;
                 message.Response.userLogin.Errormsg = "用户名不存在，请注册";
             }
+            else if(user.Password != loginRequest.Passward)
+            {
+                message.Response.userLogin.Result = Result.Failed;
+                message.Response.userLogin.Errormsg = "密码错误";
+            }
             else
             {
-                if (user.Password != loginRequest.Passward)
+                sender.Session.User = user;
+                message.Response.userLogin.Result = Result.Success;
+                message.Response.userLogin.Errormsg = "None";
+                message.Response.userLogin.Userinfo = new NUserInfo();
+                message.Response.userLogin.Userinfo.Id = 1;
+                message.Response.userLogin.Userinfo.Player = new NPlayerInfo();
+                message.Response.userLogin.Userinfo.Player.Id = user.Player.ID;
+                foreach (var c in user.Player.Characters)
                 {
-                    message.Response.userLogin.Result = Result.Failed;
-                    message.Response.userLogin.Errormsg = "密码错误";
-                }
-                else
-                {
-                    message.Response.userLogin.Result = Result.Success;
-                    message.Response.userLogin.Errormsg = "None";
+                    NCharacterInfo info = new NCharacterInfo();
+                    info.Id = c.ID;
+                    info.Name = c.Name;
+                    info.Class = (CharacterClass)c.Class;
+                    message.Response.userLogin.Userinfo.Player.Characters.Add(info);
                 }
             }
+            
             byte[] data = PackageHandler.PackMessage(message);
             sender.SendData(data,0,data.Length);
         }

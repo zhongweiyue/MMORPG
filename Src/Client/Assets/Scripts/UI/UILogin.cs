@@ -1,4 +1,5 @@
 ﻿using Services;
+using SkillBridge.Message;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,9 +16,16 @@ public class UILogin : MonoBehaviour
         UserService.Instance.OnLogin = this.OnLogin;
     }
 
-    void OnLogin(SkillBridge.Message.Result result, string msg)
+    void OnLogin(Result result, string msg)
     {
-        MessageBox.Show(string.Format("结果：{0} msg:{1}", result, msg));
+        if (result == Result.Success)
+        {
+            SceneManager.Instance.LoadScene("CharSelect");
+        }
+        else
+        {
+            MessageBox.Show(msg,"错误",MessageBoxType.Error);
+        }
     }
 
     public void OnClickLogin()
