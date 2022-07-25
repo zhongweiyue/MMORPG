@@ -14,7 +14,7 @@ public class UICharacterSelect : MonoBehaviour {
     public InputField charName;
     CharacterClass charClass;
 
-    public Transform uiCharList;
+    public Transform uiCharList;//content
     public GameObject uiCharInfo;
 
     public List<GameObject> uiChars = new List<GameObject>();
@@ -30,11 +30,11 @@ public class UICharacterSelect : MonoBehaviour {
 
     public UICharacterView characterView;
 
-    // Use this for initialization
     void Start()
     {
         DataManager.Instance.Load();
         InitCharacterSelect(true);
+        UserService.Instance.OnCreateCharacter = OnCharacterCreate;
     }
 
 
@@ -51,7 +51,19 @@ public class UICharacterSelect : MonoBehaviour {
             }
             uiChars.Clear();
 
-
+            for (int i = 0; i < User.Instance.Info.Player.Characters.Count; i++)
+            {
+                GameObject go = Instantiate(uiCharInfo, uiCharList);
+                UICharInfo charInfo = go.GetComponent<UICharInfo>();
+                charInfo.info = User.Instance.Info.Player.Characters[i];
+                Button btn = go.GetComponent<Button>();
+                int index = i;
+                btn.onClick.AddListener(()=> {
+                    OnSelectCharacter(index);
+                });
+                uiChars.Add(go);
+                go.SetActive(true);
+            }
         }
     }
 
@@ -59,6 +71,7 @@ public class UICharacterSelect : MonoBehaviour {
     {
         panelCreate.SetActive(true);
         panelSelect.SetActive(false);
+        OnSelectClass(1);
     }
 	
 	// Update is called once per frame
@@ -68,7 +81,12 @@ public class UICharacterSelect : MonoBehaviour {
 
     public void OnClickCreate()
     {
-        
+        if (string.IsNullOrEmpty(charName.text))
+        {
+            MessageBox.Show("请输入角色名称");
+            return;
+        }
+        UserService.Instance.SendCreateCharacter(charName.text,charClass);
     }
 
     public void OnSelectClass(int charClass)
@@ -82,9 +100,7 @@ public class UICharacterSelect : MonoBehaviour {
             titles[i].gameObject.SetActive(i == charClass - 1);
             names[i].text = DataManager.Instance.Characters[i + 1].Name;
         }
-
        descs.text = DataManager.Instance.Characters[charClass].Description;
-
     }
 
 
@@ -93,7 +109,6 @@ public class UICharacterSelect : MonoBehaviour {
         if (result == Result.Success)
         {
             InitCharacterSelect(true);
-
         }
         else
             MessageBox.Show(message, "错误", MessageBoxType.Error);
@@ -105,7 +120,13 @@ public class UICharacterSelect : MonoBehaviour {
         var cha = User.Instance.Info.Player.Characters[idx];
         Debug.LogFormat("Select Char:[{0}]{1}[{2}]", cha.Id, cha.Name, cha.Class);
         User.Instance.CurrentCharacter = cha;
-        characterView.CurrentCharacter = idx;
+        characterView.CurrentCharacter = (int)cha.Class-1;
+        for (int i = 0; i < User.Instance.Info.Player.Characters.Count; i++)
+        {
+            UICharInfo charinfo = uiChars[i].GetComponent<UICharInfo>();
+            charinfo.Select = i == idx;
+        }
+
     }
     public void OnClickPlay()
     {
