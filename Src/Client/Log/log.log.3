@@ -1,42 +1,19 @@
-2022-07-19 21:59:41,304 [ 1] INFO  Unity: LoadingManager start
-2022-07-19 21:59:57,887 [ 1] INFO  Unity: UserLoginRequest::user :weiyue psw:123
-2022-07-19 21:59:57,889 [ 1] INFO  Unity: ConnectToServer() Start 
-2022-07-19 21:59:57,890 [ 1] INFO  Unity: DoConnect
-2022-07-19 21:59:57,893 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
-2022-07-19 21:59:57,895 [ 1] INFO  Unity: Connect[0] to server 127.0.0.1:8000
+2022-07-24 21:49:27,470 [ 1] INFO  Unity: LoadingManager start
+2022-07-24 21:49:30,681 [ 1] INFO  Unity: DataManager > DataManager()
+2022-07-24 21:49:37,899 [ 1] INFO  Unity: UserLoginRequest::user :weiyue2 psw:123456
+2022-07-24 21:49:37,900 [ 1] INFO  Unity: ConnectToServer() Start 
+2022-07-24 21:49:37,901 [ 1] INFO  Unity: DoConnect
+2022-07-24 21:49:37,903 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
+2022-07-24 21:49:37,905 [ 1] INFO  Unity: Connect[0] to server 127.0.0.1:8000
 
-2022-07-19 21:59:57,898 [ 1] INFO  Unity: LoadingMesager::OnGameServerConnect :0 reason:Success
-2022-07-19 22:00:01,289 [ 1] INFO  Unity: OnUserLogin:Success [None]
-2022-07-19 22:00:01,297 [ 1] INFO  Unity: LoadLevel: CharSelect
-2022-07-19 22:00:01,299 [ 1] ERROR Unity: Scene 'CharSelect' couldn't be loaded because it has not been added to the build settings or the AssetBundle has not been loaded.
-To add a scene to the build settings use the menu File->Build Settings...
-UnityEngine.SceneManagement.SceneManager:LoadSceneAsync(String)
-<LoadLevel>c__Iterator0:MoveNext() (at Assets/Scripts/Scene/SceneManager.cs:29)
-UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
-SceneManager:LoadScene(String) (at Assets/Scripts/Scene/SceneManager.cs:23)
-UILogin:OnLogin(Result, String) (at Assets/Scripts/UI/UILogin.cs:23)
-Services.UserService:OnUserLogin(Object, UserLoginResponse) (at Assets/Scripts/Services/UserService.cs:161)
-Network.MessageDistributer`1:RaiseEvent(Object, UserLoginResponse) (at D:/Projects/ExtremeWorld/project-z/Src/Lib/Common/Network/MessageDistributer.cs:105)
-Network.MessageDispatch`1:Dispatch(Object, NetMessageResponse) (at D:/Projects/ExtremeWorld/project-z/Src/Lib/Common/Network/MessageDispatch.cs:11)
-Network.MessageDistributer`1:Distribute() (at D:/Projects/ExtremeWorld/project-z/Src/Lib/Common/Network/MessageDistributer.cs:148)
-Network.NetClient:ProceeMessage() (at Assets/Scripts/Network/NetClient.cs:421)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:439)
-
-2022-07-19 22:00:01,301 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
-{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, SceneManager+<LoadLevel>c__Iterator0.MoveNext () (at Assets/Scripts/Scene/SceneManager.cs:30)
-UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at D:/unity/Runtime/Export/Coroutines.cs:17)
-UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
-SceneManager:LoadScene(String) (at Assets/Scripts/Scene/SceneManager.cs:23)
-UILogin:OnLogin(Result, String) (at Assets/Scripts/UI/UILogin.cs:23)
-Services.UserService:OnUserLogin(Object, UserLoginResponse) (at Assets/Scripts/Services/UserService.cs:161)
-Network.MessageDistributer`1:RaiseEvent(Object, UserLoginResponse) (at D:/Projects/ExtremeWorld/project-z/Src/Lib/Common/Network/MessageDistributer.cs:105)
-Network.MessageDispatch`1:Dispatch(Object, NetMessageResponse) (at D:/Projects/ExtremeWorld/project-z/Src/Lib/Common/Network/MessageDispatch.cs:11)
-Network.MessageDistributer`1:Distribute() (at D:/Projects/ExtremeWorld/project-z/Src/Lib/Common/Network/MessageDistributer.cs:148)
-Network.NetClient:ProceeMessage() (at Assets/Scripts/Network/NetClient.cs:421)
-Network.NetClient:Update() (at Assets/Scripts/Network/NetClient.cs:439)
-}</args></log4net.Error>
-2022-07-19 22:00:14,649 [ 1] INFO  Unity: OnDestroy NetworkManager.
-2022-07-19 22:00:14,650 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
+2022-07-24 21:49:37,907 [ 1] INFO  Unity: LoadingMesager::OnGameServerConnect :0 reason:Success
+2022-07-24 21:49:41,039 [ 1] INFO  Unity: OnUserLogin:Success [None]
+2022-07-24 21:49:41,041 [ 1] INFO  Unity: LoadLevel: CharSelect
+2022-07-24 21:49:41,275 [ 1] INFO  Unity: LevelLoadCompleted:1
+2022-07-24 21:49:46,182 [ 1] INFO  Unity: UserCharacterCreateRequest::charName :22 charClass:Wizard
+2022-07-24 21:49:46,502 [ 1] INFO  Unity: OnUserCreateCharacter:Success [None]
+2022-07-24 21:53:25,478 [ 1] INFO  Unity: OnDestroy NetworkManager.
+2022-07-24 21:53:25,479 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
 UnityEngine.Debug:LogWarning(Object)
 Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
 Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:175)
