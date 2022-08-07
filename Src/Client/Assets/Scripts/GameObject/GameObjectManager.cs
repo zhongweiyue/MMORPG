@@ -32,7 +32,7 @@ public class GameObjectManager : MonoBehaviour
     {
         if (!CharacterDict.ContainsKey(cha.Info.Id) || CharacterDict[cha.Info.Id] == null)
         {
-            Object obj = Resources.Load<Object>(cha.Define.Resource);
+            Object obj = Resloader.Load<Object>(cha.Define.Resource);
             if (obj == null)
             {
                 Debug.LogFormat("CharacterID:{0} Resource:{1} not exit", cha.Define.TID, cha.Define.Resource);

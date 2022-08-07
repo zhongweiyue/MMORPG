@@ -20,7 +20,10 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
 
     void Start()
     {
-        if (global) DontDestroyOnLoad(this.gameObject);
+        if (global)
+        {
+            DontDestroyOnLoad(this.gameObject);
+        } 
         this.OnStart();
     }
 
