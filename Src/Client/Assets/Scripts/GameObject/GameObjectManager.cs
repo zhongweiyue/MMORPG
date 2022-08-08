@@ -65,6 +65,7 @@ public class GameObjectManager : MonoBehaviour
                     playerInputController.enabled = false;
                 }
             }
+            UIWorldElementManager.Instance.AddCharacterNameBar(go.transform, cha);
         }
     }
 

@@ -52,6 +52,10 @@ public class EntityController : MonoBehaviour
         {
             Debug.LogFormat("Name:{0} OnDestroy :entityId:{1} Position:{2} Direction:{3} Speed:{4} ", this.name, entity.entityId, entity.position, entity.direction, entity.speed);
         }
+        if (UIWorldElementManager.Instance != null)
+        {
+            UIWorldElementManager.Instance.RemoveCharacterNameBar(transform);
+        }
     }
 
     private void FixedUpdate()
