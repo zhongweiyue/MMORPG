@@ -1,14 +1,18 @@
-﻿using System;
+﻿using Common.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace Models
 {
     class User : Singleton<User>
     {
-        SkillBridge.Message.NUserInfo userInfo;
+        public MapDefine currentMapData { get; set; }
+        public GameObject currentCharacterObject { get; set; }
 
+        SkillBridge.Message.NUserInfo userInfo;
 
         public SkillBridge.Message.NUserInfo Info
         {

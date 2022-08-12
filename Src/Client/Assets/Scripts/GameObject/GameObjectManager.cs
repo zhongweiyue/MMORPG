@@ -1,4 +1,5 @@
 ﻿using Entities;
+using Managers;
 using Models;
 using System.Collections;
 using System.Collections.Generic;
@@ -55,6 +56,7 @@ public class GameObjectManager : MonoBehaviour
             {
                 if (cha.Info.Id == User.Instance.CurrentCharacter.Id)
                 {
+                    User.Instance.currentCharacterObject = go;
                     MainPlayerCamera.Instance.player = go;
                     playerInputController.enabled = true;
                     playerInputController.character = cha;

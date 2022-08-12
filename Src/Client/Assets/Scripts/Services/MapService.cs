@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Managers;
 
 public class MapService : Singleton<MapService>, IDisposable
 {
@@ -49,6 +50,7 @@ public class MapService : Singleton<MapService>, IDisposable
         if (DataManager.Instance.Maps.ContainsKey(mapId))
         {
             MapDefine map = DataManager.Instance.Maps[mapId];
+            User.Instance.currentMapData = map;
             SceneManager.Instance.LoadScene(map.Resource);
         }
         else
