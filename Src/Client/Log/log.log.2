@@ -1,33 +1,56 @@
-2022-08-08 23:32:34,550 [ 1] INFO  Unity: LoadingManager start
-2022-08-08 23:32:38,271 [ 1] INFO  Unity: DataManager > DataManager()
-2022-08-08 23:32:51,358 [ 1] INFO  Unity: UserLoginRequest::user :wei psw:123
-2022-08-08 23:32:51,365 [ 1] INFO  Unity: ConnectToServer() Start 
-2022-08-08 23:32:51,366 [ 1] INFO  Unity: DoConnect
-2022-08-08 23:32:51,367 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
-2022-08-08 23:32:51,369 [ 1] INFO  Unity: Connect[0] to server 127.0.0.1:8000
+2022-08-24 01:32:10,825 [ 1] INFO  Unity: LoadingManager start
+2022-08-24 01:32:14,019 [ 1] INFO  Unity: DataManager > DataManager()
+2022-08-24 01:32:19,437 [ 1] INFO  Unity: UserLoginRequest::user :wei psw:123
+2022-08-24 01:32:19,438 [ 1] INFO  Unity: ConnectToServer() Start 
+2022-08-24 01:32:19,439 [ 1] INFO  Unity: DoConnect
+2022-08-24 01:32:19,441 [ 1] INFO  Unity: NetClient.DoConnect on 127.0.0.1:8000
+2022-08-24 01:32:19,443 [ 1] INFO  Unity: Connect[0] to server 127.0.0.1:8000
 
-2022-08-08 23:32:51,374 [ 1] INFO  Unity: LoadingMesager::OnGameServerConnect :0 reason:Success
-2022-08-08 23:32:51,618 [ 1] INFO  Unity: OnUserLogin:Success [None]
-2022-08-08 23:32:51,624 [ 1] INFO  Unity: LoadLevel: CharSelect
-2022-08-08 23:32:51,852 [ 1] INFO  Unity: LevelLoadCompleted:1
-2022-08-08 23:32:52,787 [ 1] INFO  Unity: Select Char:[15]yue[Wizard]
-2022-08-08 23:32:54,976 [ 1] INFO  Unity: UserGameEnterRequest::characterId :0
-2022-08-08 23:32:55,016 [ 1] INFO  Unity: OnUserGameEnter:Success [None]
-2022-08-08 23:32:55,019 [ 1] INFO  Unity: OnMapCharacterEnter MapId:1,CharacterCount:2
-2022-08-08 23:33:46,613 [ 1] INFO  Unity: AddCharacter: characterId:15,characterName:yue,Mapid:1,Entity:SkillBridge.Message.NEntity
-2022-08-08 23:34:20,764 [ 1] INFO  Unity: AddCharacter: characterId:16,characterName:yue1,Mapid:1,Entity:SkillBridge.Message.NEntity
-2022-08-08 23:35:17,038 [ 1] INFO  Unity: LoadLevel: MainCity
-2022-08-08 23:35:20,019 [ 1] INFO  Unity: OnMapCharacterEnter:1
-2022-08-08 23:35:20,878 [ 1] INFO  Unity: LoadLevel: MainCity
-2022-08-08 23:35:25,366 [ 1] INFO  Unity: LevelLoadCompleted:1
-2022-08-08 23:39:47,346 [ 1] INFO  Unity: Name:character_16_yue1 OnDestroy :entityId:0 Position:(5000, 4000, 820) Direction:(100, 0, 0) Speed:0 
-2022-08-08 23:39:47,349 [ 1] INFO  Unity: Name:character_15_yue OnDestroy :entityId:0 Position:(5000, 4000, 820) Direction:(100, 0, 0) Speed:0 
-2022-08-08 23:39:47,405 [ 1] INFO  Unity: LevelLoadCompleted:1
-2022-08-08 23:40:50,304 [ 1] INFO  Unity: Name:character_16_yue1 OnDestroy :entityId:0 Position:(5000, 4000, 820) Direction:(100, 0, 0) Speed:0 
-2022-08-08 23:40:50,306 [ 1] INFO  Unity: Name:character_15_yue OnDestroy :entityId:0 Position:(5000, 4000, 820) Direction:(100, 0, 0) Speed:0 
-2022-08-08 23:40:50,310 [ 1] INFO  Unity: OnDestroy NetworkManager.
-2022-08-08 23:40:50,311 [ 1] WARN  Unity: CloseConnection(), errorCode: 1007
-UnityEngine.Debug:LogWarning(Object)
-Network.NetClient:CloseConnection(Int32) (at Assets/Scripts/Network/NetClient.cs:180)
-Network.NetClient:OnDestroy() (at Assets/Scripts/Network/NetClient.cs:175)
+2022-08-24 01:32:19,446 [ 1] INFO  Unity: LoadingMesager::OnGameServerConnect :0 reason:Success
+2022-08-24 01:32:22,423 [ 1] INFO  Unity: OnUserLogin:Success [None]
+2022-08-24 01:32:22,424 [ 1] INFO  Unity: LoadLevel: CharSelect
+2022-08-24 01:32:22,669 [ 1] INFO  Unity: LevelLoadCompleted:1
+2022-08-24 01:32:23,769 [ 1] INFO  Unity: Select Char:[15]yue[Wizard]
+2022-08-24 01:32:24,577 [ 1] INFO  Unity: UserGameEnterRequest::characterId :0
+2022-08-24 01:32:24,622 [ 1] INFO  Unity: OnUserGameEnter:Success [None]
+2022-08-24 01:32:24,625 [ 1] INFO  Unity: OnMapCharacterEnter MapId:1,CharacterCount:1
+2022-08-24 01:32:24,628 [ 1] INFO  Unity: AddCharacter: characterId:15,characterName:yue,Mapid:1,Entity:SkillBridge.Message.NEntity
+2022-08-24 01:32:24,631 [ 1] INFO  Unity: LoadLevel: MainCity
+2022-08-24 01:32:24,632 [ 1] INFO  Unity: OnMapCharacterEnter:1
+2022-08-24 01:32:24,633 [ 1] INFO  Unity: LoadLevel: MainCity
+2022-08-24 01:32:24,919 [ 1] INFO  Unity: LevelLoadCompleted:1
+2022-08-24 01:32:24,921 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UIMinimap.InitMap () (at Assets/Scripts/UI/UIMinimap.cs:28)
+UIMinimap.Start () (at Assets/Scripts/UI/UIMinimap.cs:16)
+}</args></log4net.Error>
+2022-08-24 01:32:25,185 [ 1] INFO  Unity: LevelLoadCompleted:1
+2022-08-24 01:32:25,185 [ 1] FATAL Unity: <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>{0
+{1}</format><args>{NullReferenceException: Object reference not set to an instance of an object, UIMinimap.InitMap () (at Assets/Scripts/UI/UIMinimap.cs:28)
+UIMinimap.Start () (at Assets/Scripts/UI/UIMinimap.cs:16)
+}</args></log4net.Error>
+2022-08-24 01:33:05,056 [ 1] WARN  Unity: Assets/Scripts/GameObject/MainPlayerCamera.cs(8,19): warning CS0108: `MainPlayerCamera.camera' hides inherited member `UnityEngine.Component.camera'. Use the new keyword if hiding was intended
+
+2022-08-24 01:33:05,056 [ 1] WARN  Unity: Assets/Scripts/GameObject/EntityController.cs(18,24): warning CS0649: Field `EntityController.rotation' is never assigned to, and will always have its default value
+
+2022-08-24 01:33:05,057 [ 1] WARN  Unity: Assets/Scripts/GameObject/EntityController.cs(21,24): warning CS0414: The private field `EntityController.lastRotation' is assigned but its value is never used
+
+2022-08-24 01:33:05,057 [ 1] WARN  Unity: Assets/Scripts/GameObject/PlayerInputController.cs(98,11): warning CS0414: The private field `PlayerInputController.lastSync' is assigned but its value is never used
+
+2022-08-24 01:33:05,057 [ 1] WARN  Unity: Assets/BMFont/Editor/BMFontEditor.cs(43,10): warning CS0618: `UnityEngine.CharacterInfo.uv' is obsolete: `CharacterInfo.uv is deprecated. Use uvBottomLeft, uvBottomRight, uvTopRight or uvTopLeft instead.'
+
+2022-08-24 01:33:05,058 [ 1] WARN  Unity: Assets/BMFont/Editor/BMFontEditor.cs(44,10): warning CS0618: `UnityEngine.CharacterInfo.uv' is obsolete: `CharacterInfo.uv is deprecated. Use uvBottomLeft, uvBottomRight, uvTopRight or uvTopLeft instead.'
+
+2022-08-24 01:33:05,058 [ 1] WARN  Unity: Assets/BMFont/Editor/BMFontEditor.cs(45,10): warning CS0618: `UnityEngine.CharacterInfo.uv' is obsolete: `CharacterInfo.uv is deprecated. Use uvBottomLeft, uvBottomRight, uvTopRight or uvTopLeft instead.'
+
+2022-08-24 01:33:05,058 [ 1] WARN  Unity: Assets/BMFont/Editor/BMFontEditor.cs(46,10): warning CS0618: `UnityEngine.CharacterInfo.uv' is obsolete: `CharacterInfo.uv is deprecated. Use uvBottomLeft, uvBottomRight, uvTopRight or uvTopLeft instead.'
+
+2022-08-24 01:33:05,058 [ 1] WARN  Unity: Assets/BMFont/Editor/BMFontEditor.cs(47,10): warning CS0618: `UnityEngine.CharacterInfo.vert' is obsolete: `CharacterInfo.vert is deprecated. Use minX, maxX, minY, maxY instead.'
+
+2022-08-24 01:33:05,058 [ 1] WARN  Unity: Assets/BMFont/Editor/BMFontEditor.cs(48,10): warning CS0618: `UnityEngine.CharacterInfo.vert' is obsolete: `CharacterInfo.vert is deprecated. Use minX, maxX, minY, maxY instead.'
+
+2022-08-24 01:33:05,059 [ 1] WARN  Unity: Assets/BMFont/Editor/BMFontEditor.cs(49,10): warning CS0618: `UnityEngine.CharacterInfo.vert' is obsolete: `CharacterInfo.vert is deprecated. Use minX, maxX, minY, maxY instead.'
+
+2022-08-24 01:33:05,059 [ 1] WARN  Unity: Assets/BMFont/Editor/BMFontEditor.cs(50,10): warning CS0618: `UnityEngine.CharacterInfo.vert' is obsolete: `CharacterInfo.vert is deprecated. Use minX, maxX, minY, maxY instead.'
+
+2022-08-24 01:33:05,059 [ 1] WARN  Unity: Assets/BMFont/Editor/BMFontEditor.cs(51,10): warning CS0618: `UnityEngine.CharacterInfo.width' is obsolete: `CharacterInfo.width is deprecated. Use advance instead.'
 

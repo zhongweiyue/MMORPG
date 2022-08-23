@@ -15,6 +15,7 @@ public class MapService : Singleton<MapService>, IDisposable
     public MapService()
     {
         MessageDistributer.Instance.Subscribe<SkillBridge.Message.MapCharacterEnterResponse>(this.OnMapCharacterEnter);
+        MessageDistributer.Instance.Subscribe<SkillBridge.Message.MapCharacterLeaveResponse>(this.OnMapCharacterLeave);
     }
     public void Init()
     {
@@ -24,6 +25,7 @@ public class MapService : Singleton<MapService>, IDisposable
     public void Dispose()
     {
         MessageDistributer.Instance.Unsubscribe<SkillBridge.Message.MapCharacterEnterResponse>(this.OnMapCharacterEnter);
+        MessageDistributer.Instance.Unsubscribe<SkillBridge.Message.MapCharacterLeaveResponse>(this.OnMapCharacterLeave);
     }
 
 
@@ -42,6 +44,19 @@ public class MapService : Singleton<MapService>, IDisposable
         {
             EnterMap(response.mapId);
             CurrentMapId = response.mapId;
+        }
+    }
+
+    private void OnMapCharacterLeave(object sender, MapCharacterLeaveResponse response)
+    {
+        Debug.LogFormat("OnMapCharacterLeave CharacterID:{0}", response.characterId);
+        if (response.characterId != User.Instance.CurrentCharacter.Id)
+        {
+            CharacterManager.Instance.RemoveCharacter(response.characterId);
+        }
+        else
+        {
+            CharacterManager.Instance.Clear();
         }
     }
 

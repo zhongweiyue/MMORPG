@@ -30,6 +30,7 @@ public class UIMinimap : MonoBehaviour
 
     void Update()
     {
+        if (minimapBoundingBox == null || playerTransform == null) return;
         float realWidth = minimapBoundingBox.bounds.size.x;
         float realHeight = minimapBoundingBox.bounds.size.z;
         float relaX = playerTransform.position.x - minimapBoundingBox.bounds.min.x;
