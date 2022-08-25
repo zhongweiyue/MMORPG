@@ -32,6 +32,7 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
             return;
         if (CharacterDict[cha.entityId] != null)
         {
+            Destroy(CharacterDict[cha.entityId]);
             CharacterDict.Remove(cha.entityId);
         }
     }
