@@ -9,16 +9,6 @@ public class MainPlayerCamera : MonoSingleton<MainPlayerCamera>
     public Transform viewPoint;
     public GameObject player;
 
-    private void Start()
-    {
-
-    }
-
-    private void Update()
-    {
-        
-    }
-
     private void LateUpdate()
     {
         if (player == null)

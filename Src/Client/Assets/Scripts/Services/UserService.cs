@@ -29,7 +29,6 @@ namespace Services
             MessageDistributer.Instance.Subscribe<UserCreateCharacterResponse>(this.OnUserCreateCharacter);
             MessageDistributer.Instance.Subscribe<UserGameEnterResponse>(this.OnUserGameEnter);
             MessageDistributer.Instance.Subscribe<UserGameLeaveResponse>(this.OnUserGameLeave);
-            MessageDistributer.Instance.Subscribe<MapCharacterEnterResponse>(this.OnMapCharacterEnter);
         }
 
         public void Dispose()
@@ -39,7 +38,6 @@ namespace Services
             MessageDistributer.Instance.Unsubscribe<UserCreateCharacterResponse>(this.OnUserCreateCharacter);
             MessageDistributer.Instance.Unsubscribe<UserGameEnterResponse>(this.OnUserGameEnter);
             MessageDistributer.Instance.Unsubscribe<UserGameLeaveResponse>(this.OnUserGameLeave);
-            MessageDistributer.Instance.Unsubscribe<MapCharacterEnterResponse>(this.OnMapCharacterEnter);
             NetClient.Instance.OnConnect -= OnGameServerConnect;
             NetClient.Instance.OnDisconnect -= OnGameServerDisconnect;
         }
@@ -246,14 +244,7 @@ namespace Services
         void OnUserGameLeave(object sender, UserGameLeaveResponse response)
         {
             Debug.LogFormat("OnUserGameLeave:{0} [{1}]", response.Result, response.Errormsg);
-        }
-
-        void OnMapCharacterEnter(object sender, MapCharacterEnterResponse response)
-        {
-            Debug.LogFormat("OnMapCharacterEnter:{0}", response.mapId);
-            NCharacterInfo info = response.Characters[0];
-            User.Instance.CurrentCharacter = info;
-            SceneManager.Instance.LoadScene(DataManager.Instance.Maps[response.mapId].Resource);
+            MapService.Instance.CurrentMapId = 0;
         }
     }
 }

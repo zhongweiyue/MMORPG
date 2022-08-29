@@ -107,5 +107,22 @@ namespace GameServer.Models
             byte[] data = PackageHandler.PackMessage(message);
             conn.SendData(data, 0, data.Length);
         }
+
+        internal void UpdateEntity(NEntitySync entity)
+        {
+            foreach (var kv in MapCharacters)
+            {
+                if (kv.Value.character.entityId == entity.Id)
+                {
+                    kv.Value.character.Position = entity.Entity.Position;
+                    kv.Value.character.Direction = entity.Entity.Direction;
+                    kv.Value.character.Speed = entity.Entity.Speed;
+                }
+                else
+                {
+                    MapService.Instance.SendEntityUpdate(kv.Value.connection, entity);
+                }
+            }
+        }
     }
 }

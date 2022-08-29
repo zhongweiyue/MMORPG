@@ -102,4 +102,9 @@ public class EntityController : MonoBehaviour,IEntityNotify
         }
         Destroy(gameObject);
     }
+
+    public void OnEntityChanged(Entity entity)
+    {
+        Debug.LogFormat("MapEntityUpdateRequest: ID:{0}, Pos:{1}, DIR:{2}, SPEED:{3}", entity.entityId, entity.position, entity.direction, entity.speed);
+    }
 }
