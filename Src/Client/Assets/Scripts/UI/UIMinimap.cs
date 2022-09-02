@@ -25,11 +25,14 @@ public class UIMinimap : MonoBehaviour
         }
         miniMap.SetNativeSize();
         miniMap.transform.localPosition = Vector3.zero;
-        playerTransform = User.Instance.currentCharacterObject.transform;
     }
 
     void Update()
     {
+        if (playerTransform == null)
+        {
+            playerTransform = MinimapManager.Instance.PlayerTransform;
+        }
         if (minimapBoundingBox == null || playerTransform == null) return;
         float realWidth = minimapBoundingBox.bounds.size.x;
         float realHeight = minimapBoundingBox.bounds.size.z;

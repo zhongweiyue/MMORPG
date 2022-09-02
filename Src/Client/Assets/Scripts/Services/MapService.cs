@@ -37,8 +37,9 @@ public class MapService : Singleton<MapService>, IDisposable
         Debug.LogFormat("OnMapCharacterEnter MapId:{0},CharacterCount:{1}", response.mapId, response.Characters.Count);
         foreach (var cha in response.Characters)
         {
-            if (User.Instance.CurrentCharacter.Id == cha.Id)
+            if (User.Instance.CurrentCharacter ==null||User.Instance.CurrentCharacter.Id == cha.Id)
             {
+                //当前角色切换地图
                 User.Instance.CurrentCharacter = cha;
             }
             CharacterManager.Instance.AddCharacter(cha);

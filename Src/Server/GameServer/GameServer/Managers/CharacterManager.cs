@@ -34,7 +34,8 @@ namespace GameServer.Managers
         public Character AddCharacter(TCharacter cha)
         {
             Character character = new Character(CharacterType.Player, cha);
-            EntityManager.Instance.AddEntity(cha.MapID, character);
+            EntityManager.Instance.AddEntity(cha.MapID, character);//通过entityManager，此时character.Id为实体id了
+            character.Info.Id = character.Id;
             this.Characters[character.Id] = character;
             return character;
         }
