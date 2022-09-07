@@ -5,6 +5,16 @@ using UnityEngine;
 
 public class MinimapManager : Singleton<MinimapManager>
 {
+    public UIMinimap minimap;
+    private Collider minimapBoundingBox;
+    public Collider MinimapBoundingBox
+    {
+        get
+        {
+            return minimapBoundingBox;
+        }
+    }
+
     public Transform PlayerTransform
     {
         get
@@ -18,5 +28,14 @@ public class MinimapManager : Singleton<MinimapManager>
     public Sprite LoadCurrentMinimap()
     {
         return Resloader.Load<Sprite>("UI/Minimap/" + User.Instance.currentMapData.MiniMap);
+    }
+
+    public void UpdateMinimap(Collider minimapBoundingBox)
+    {
+        this.minimapBoundingBox = minimapBoundingBox;
+        if (minimap != null)
+        {
+            minimap.UpdateMap();
+        }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class UIMinimap : MonoBehaviour
 {
-    public BoxCollider minimapBoundingBox;
+    public Collider minimapBoundingBox;
     public Image arrow;
     public Image miniMap;
     public Text mapName;
@@ -13,18 +13,18 @@ public class UIMinimap : MonoBehaviour
 
     void Start()
     {
-        InitMap();
+        MinimapManager.Instance.minimap = this;
+        UpdateMap();
     }
 
-    void InitMap()
+    public void UpdateMap()
     {
         mapName.text = User.Instance.currentMapData.Name;
-        if (miniMap.overrideSprite == null)
-        {
-            miniMap.overrideSprite = MinimapManager.Instance.LoadCurrentMinimap();
-        }
+        miniMap.overrideSprite = MinimapManager.Instance.LoadCurrentMinimap();
         miniMap.SetNativeSize();
         miniMap.transform.localPosition = Vector3.zero;
+        minimapBoundingBox = MinimapManager.Instance.MinimapBoundingBox;
+        playerTransform = null;
     }
 
     void Update()

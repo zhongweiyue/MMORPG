@@ -67,6 +67,7 @@
     <Compile Include="Assets\BMFont\Editor\BMFontReader.cs" />
     <Compile Include="Assets\BMFont\Editor\BMGlyph.cs" />
     <Compile Include="Assets\BMFont\Editor\ByteReader.cs" />
+    <Compile Include="Assets\Editor\MapTools.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>E:/unity project/MMORPG/MyMMO/MMORPG/Src/Client/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
