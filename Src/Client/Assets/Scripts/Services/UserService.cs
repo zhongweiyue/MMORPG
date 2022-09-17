@@ -237,7 +237,10 @@ namespace Services
             Debug.LogFormat("OnUserGameEnter:{0} [{1}]", response.Result, response.Errormsg);
             if (response.Result == Result.Success)
             {
-               //todo
+                if (response.Character != null)
+                {
+                    ItemManager.Instance.Init(response.Character.Items);
+                }
             }
         }
 
