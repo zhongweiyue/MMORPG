@@ -32,27 +32,33 @@ namespace GameServer.Services
         {
             Log.InfoFormat("UserRegisterRequest: User:{0}  Pass:{1}", request.User, request.Passward);
 
-            NetMessage message = new NetMessage();
-            message.Response = new NetMessageResponse();
-            message.Response.userRegister = new UserRegisterResponse();
+            //NetMessage message = new NetMessage();
+            //message.Response = new NetMessageResponse();
+            //message.Response.userRegister = new UserRegisterResponse();
+            sender.Session.Response.userLogin = new UserLoginResponse();
 
             TUser user = DBService.Instance.Entities.Users.Where(u => u.Username == request.User).FirstOrDefault();
             if (user != null)
             {
-                message.Response.userRegister.Result = Result.Failed;
-                message.Response.userRegister.Errormsg = "用户已存在.";
+                //message.Response.userRegister.Result = Result.Failed;
+                //message.Response.userRegister.Errormsg = "用户已存在.";
+                sender.Session.Response.userRegister.Result = Result.Failed;
+                sender.Session.Response.userRegister.Errormsg = "用户已存在.";
             }
             else
             {
                 TPlayer player = DBService.Instance.Entities.Players.Add(new TPlayer());
                 DBService.Instance.Entities.Users.Add(new TUser() { Username = request.User, Password = request.Passward, Player = player });
                 DBService.Instance.Entities.SaveChanges();
-                message.Response.userRegister.Result = Result.Success;
-                message.Response.userRegister.Errormsg = "None";
+                //message.Response.userRegister.Result = Result.Success;
+                //message.Response.userRegister.Errormsg = "None";
+                sender.Session.Response.userRegister.Result = Result.Success;
+                sender.Session.Response.userRegister.Errormsg = "None";
             }
 
-            byte[] data = PackageHandler.PackMessage(message);
-            sender.SendData(data, 0, data.Length);
+            //byte[] data = PackageHandler.PackMessage(message);
+            //sender.SendData(data, 0, data.Length);
+            sender.SendResponse();
         }
 
         void OnLogin(NetConnection<NetSession>sender, UserLoginRequest loginRequest)
@@ -108,7 +114,8 @@ namespace GameServer.Services
                 MapID = 1,
                 MapPosX = 5000,
                 MapPosY = 4000,
-                MapPosZ = 820
+                MapPosZ = 820,
+                Gold = 100000,
             };
             var bag = new TCharacterBag();
             bag.Owner = character;

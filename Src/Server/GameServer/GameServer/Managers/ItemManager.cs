@@ -77,6 +77,7 @@ class ItemManager
             item = new Item(dbItem);
             ItemsDict.Add(itemId, item);
         }
+        this.Owner.StatusManager.AddItemChange(itemId, count, StatusAction.Add);
         Log.InfoFormat("[{0}]AddItem[{1}] addCount:{2}", Owner.Data.ID, item, count);
         //DBService.Instance.Save();
         return true;
@@ -94,6 +95,7 @@ class ItemManager
             return false;
         }
         item.Remove(count);
+        this.Owner.StatusManager.AddItemChange(itemId, count, StatusAction.Delete);
         Log.InfoFormat("[{0}]RemoveItem[{1}] removeCount:{2}", Owner.Data.ID, item, count);
         //DBService.Instance.Save();
         return true;

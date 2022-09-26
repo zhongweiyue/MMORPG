@@ -46,9 +46,14 @@ public class UIBag : UIWindow
         yield return null;
     }
 
-    public void SetTitle(string title) 
+    //public void SetTitle(string title) 
+    //{
+    //    money.text = User.Instance.CurrentCharacter.Id.ToString();
+    //}
+
+    public void RefreshGold() 
     {
-        money.text = User.Instance.CurrentCharacter.Id.ToString();
+        money.text = User.Instance.CurrentCharacter.Gold.ToString();
     }
 
     public void OnReset() 
@@ -56,4 +61,5 @@ public class UIBag : UIWindow
         BagManager.Instance.Reset();
     }
    
+
 }

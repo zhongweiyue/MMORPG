@@ -79,4 +79,42 @@ using UnityEngine;
         return Info;
     }
 
+    public void AddItem(int itemId, int count) 
+    {
+        ushort addCount = (ushort)count;
+        for (int i = 0; i < Items.Length; i++)
+        {
+            if (Items[i].ItemId == itemId) 
+            {
+                ushort canAdd = (ushort)(DataManager.Instance.Items[itemId].StackLimit - Items[i].Count);
+                if (canAdd >= addCount) //该格子够添加
+                {
+                    Items[i].Count += addCount;
+                    addCount = 0;
+                    break;
+                }
+                else 
+                {
+                    Items[i].Count += canAdd;
+                    addCount -= canAdd;
+                }
+            }
+        }
+        if (addCount > 0) 
+        {
+            for (int i = 0; i < Items.Length; i++)
+            {
+                if (Items[i].ItemId == 0) //空格子
+                {
+                    Items[i].ItemId = (ushort)itemId;
+                    Items[i].Count = addCount;
+                }
+            }
+        }
+    }
+
+    public void RemoveItem(int itemId, int count) 
+    {
+    
+    }
 }
