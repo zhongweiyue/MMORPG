@@ -35,7 +35,7 @@ namespace GameServer.Services
             //NetMessage message = new NetMessage();
             //message.Response = new NetMessageResponse();
             //message.Response.userRegister = new UserRegisterResponse();
-            sender.Session.Response.userLogin = new UserLoginResponse();
+            sender.Session.Response.userRegister = new UserRegisterResponse();
 
             TUser user = DBService.Instance.Entities.Users.Where(u => u.Username == request.User).FirstOrDefault();
             if (user != null)
