@@ -32,7 +32,8 @@ namespace Services
 
         private void OnItemBuy(object sender, ItemBuyResponse message)
         {
-            MessageBox.Show("购买结果：" + message.Result + "/n" + message.Errormsg, "购买完成");
+            UIMessageBox msgbox = MessageBox.Show("购买结果：" + message.Result + "/n" + message.Errormsg, "购买完成");
+            msgbox.OnYes = () => ShopManager.Instance.RefreshGold();
         }
     }
 }
