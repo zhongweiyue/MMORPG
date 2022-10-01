@@ -108,6 +108,7 @@ using UnityEngine;
                 {
                     Items[i].ItemId = (ushort)itemId;
                     Items[i].Count = addCount;
+                    break;
                 }
             }
         }
