@@ -701,8 +701,8 @@ namespace SkillBridge.Message
         Weapon = 0,
         [global::ProtoBuf.ProtoEnum(Name = @"ACCESSORY")]
         Accessory = 1,
-        [global::ProtoBuf.ProtoEnum(Name = @"HEUMET")]
-        Heumet = 2,
+        [global::ProtoBuf.ProtoEnum(Name = @"HELMET")]
+        Helmet = 2,
         [global::ProtoBuf.ProtoEnum(Name = @"CHEST")]
         Chest = 3,
         [global::ProtoBuf.ProtoEnum(Name = @"SHOULDER")]

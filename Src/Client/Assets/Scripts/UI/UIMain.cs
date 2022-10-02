@@ -46,4 +46,9 @@ public class UIMain : MonoSingleton<UIMain>
         uiBag.RefreshGold();
     }
 
+    public void OnClickCharEquip()
+    {
+        UIManager.Instance.Show<UICharEquip>();
+    }
+
 }

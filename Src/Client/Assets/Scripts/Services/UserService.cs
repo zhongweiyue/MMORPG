@@ -8,6 +8,7 @@ using UnityEngine;
 
 using SkillBridge.Message;
 using Models;
+using Managers;
 
 namespace Services
 {
@@ -241,6 +242,7 @@ namespace Services
                 {
                     ItemManager.Instance.Init(response.Character.Items);
                     BagManager.Instance.Init(response.Character.Bag);
+                    EquipManager.Instance.Init(response.Character.Equips);
                 }
             }
         }

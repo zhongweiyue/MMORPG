@@ -58,7 +58,7 @@ enum EQUIP_SLOT
 {
        WEAPON        =0;
        ACCESSORY     =1;
-       HEUMET        =2;//头盔
+       HELMET        =2;//头盔
        CHEST         =3;//胸甲
        SHOULDER      =4;//护肩
        PANTS         =5;//裤子
