@@ -1,4 +1,5 @@
 ﻿using Common.Data;
+using Managers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,9 +40,9 @@ public class NpcManager : Singleton<NpcManager>
 
     public bool Interactive(NpcDefine npc)
     {
-        if (npc.Type == NpcType.Task)
+        if (DoTaskInteractive(npc))
         {
-            return DoTaskInteractive(npc);
+            return true;
         }
         else if(npc.Type == NpcType.Functional)
         {
@@ -52,8 +53,10 @@ public class NpcManager : Singleton<NpcManager>
 
     private bool DoTaskInteractive(NpcDefine npc)
     {
-        MessageBox.Show("点击了NPC:" + npc.Name, "NPC对话");
-        return true;
+        var status = QuestManager.Instance.GetQuestStatusByNpc(npc.ID);
+        if (status == NpcQuestStatus.None)
+            return false;
+        return QuestManager.Instance.OpenNpcQuest(npc.ID);
     }
 
     private bool DoFunctionInteractive(NpcDefine npc)

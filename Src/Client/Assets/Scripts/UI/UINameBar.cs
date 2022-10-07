@@ -17,7 +17,6 @@ public class UINameBar : MonoBehaviour
     void Update()
     {
         UpdateInfo();
-        transform.forward = Camera.main.transform.forward;
     }
 
     void UpdateInfo()

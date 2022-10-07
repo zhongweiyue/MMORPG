@@ -10,7 +10,7 @@ namespace Managers
     class EquipManager : Singleton<EquipManager>
     {
         public delegate void OnEquipChangeHanlder();
-        public event OnEquipChangeHanlder OnEquipChanged;
+        public event OnEquipChangeHanlder OnEquipChanged;//UICharEquip的RefreshUI
         public Item[] Equips = new Item[(int)EquipSlot.SlotMax];//7个装备槽
         byte[] Data;
 

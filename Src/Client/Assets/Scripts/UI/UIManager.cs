@@ -19,6 +19,8 @@ public class UIManager : Singleton<UIManager>
         UIResourcesDict.Add(typeof(UIBag), new UIElement() { Resources = "UI/UIBag", Cache = false });
         UIResourcesDict.Add(typeof(UIShop), new UIElement() { Resources = "UI/UIShop", Cache = false });
         UIResourcesDict.Add(typeof(UICharEquip), new UIElement() { Resources = "UI/UICharEquip", Cache = false });
+        UIResourcesDict.Add(typeof(UIQuestSystem), new UIElement() { Resources = "UI/UIQuestSystem", Cache = false });
+        UIResourcesDict.Add(typeof(UIQuestDialog), new UIElement() { Resources = "UI/UIQuestDialog", Cache = false });
     }
 
     ~UIManager() { }
