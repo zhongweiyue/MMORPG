@@ -59,10 +59,12 @@ public class UIQuestSystem : UIWindow
             GameObject go = Instantiate(itemPrefab, kv.Value.Define.Type == QuestType.Main ? listMain.transform : listBranch.transform);
             UIQuestItem ui = go.GetComponent<UIQuestItem>();
             ui.SetQuestInfo(kv.Value);
-            if (kv.Value.Define.Type == QuestType.Main)
-                listMain.AddItem(ui);
-            else
-                listBranch.AddItem(ui);
+            //if (kv.Value.Define.Type == QuestType.Main)
+            //    listMain.AddItem(ui);
+            //else
+            //    listBranch.AddItem(ui);
+            listMain.AddItem(ui);
+            listBranch.AddItem(ui);
         }
     }
 
