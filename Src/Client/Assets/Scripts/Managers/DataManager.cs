@@ -23,6 +23,7 @@ public class DataManager : Singleton<DataManager>
     public Dictionary<int, Dictionary<int, ShopItemDefine>> ShopItems = null;
     public Dictionary<int, EquipDefine> Equips = null;
     public Dictionary<int, QuestDefine> Quests = null;
+    public Dictionary<int, Dictionary<int, SpawnRuleDefine>> SpawnRules = null;
 
     public DataManager()
     {
@@ -61,6 +62,9 @@ public class DataManager : Singleton<DataManager>
 
         json = File.ReadAllText(this.DataPath + "QuestDefine.txt");
         this.Quests = JsonConvert.DeserializeObject<Dictionary<int, QuestDefine>>(json);
+
+        json = File.ReadAllText(this.DataPath + "SpawnRuleDefine.txt");
+        this.SpawnRules = JsonConvert.DeserializeObject<Dictionary<int, Dictionary<int, SpawnRuleDefine>>>(json);
     }
 
 
@@ -108,6 +112,10 @@ public class DataManager : Singleton<DataManager>
 
         json = File.ReadAllText(this.DataPath + "QuestDefine.txt");
         this.Quests = JsonConvert.DeserializeObject<Dictionary<int, QuestDefine>>(json);
+        yield return null;
+
+        json = File.ReadAllText(this.DataPath + "SpawnRuleDefine.txt");
+        this.SpawnRules = JsonConvert.DeserializeObject<Dictionary<int, Dictionary<int, SpawnRuleDefine>>>(json);
         yield return null;
     }
 
