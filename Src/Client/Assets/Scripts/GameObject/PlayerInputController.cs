@@ -25,7 +25,7 @@ public class PlayerInputController : MonoBehaviour
             NCharacterInfo nChaInfo = new NCharacterInfo();
             nChaInfo.Id = 1;
             nChaInfo.Name = "aa";
-            nChaInfo.Tid = 1;
+            nChaInfo.ConfigId = 1;
             nChaInfo.Entity = new NEntity();
             nChaInfo.Entity.Position = new NVector3();
             nChaInfo.Entity.Direction = new NVector3();

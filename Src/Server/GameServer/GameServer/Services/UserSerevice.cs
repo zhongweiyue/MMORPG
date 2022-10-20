@@ -82,7 +82,8 @@ namespace GameServer.Services
                     info.Id = c.ID;
                     info.Name = c.Name;
                     info.Type = CharacterType.Player;
-                    info.Tid = c.ID;
+                    //info.Tid = c.ID;
+                    info.ConfigId = c.ID;
                     info.Class = (CharacterClass)c.Class;
                     sender.Session.Response.userLogin.Userinfo.Player.Characters.Add(info);
                 }
@@ -98,8 +99,9 @@ namespace GameServer.Services
                 Name = request.Name,
                 Class = (int)request.Class,
                 TID = (int)request.Class,
+                Level = 1,
                 MapID = 1,
-                MapPosX = 5000,
+                MapPosX = 5000,//初始出生位置X
                 MapPosY = 4000,
                 MapPosZ = 820,
                 Gold = 100000,
@@ -132,10 +134,11 @@ namespace GameServer.Services
             foreach (var c in sender.Session.User.Player.Characters)
             {
                 NCharacterInfo info = new NCharacterInfo();
-                info.Id = 0;
+                info.Id = c.ID;
                 info.Name = c.Name;
                 info.Type = CharacterType.Player;
-                info.Tid = c.ID;
+                //info.Tid = c.ID;
+                info.ConfigId = c.TID;
                 info.Class = (CharacterClass)c.Class;
                 sender.Session.Response.createChar.Characters.Add(info);
             }

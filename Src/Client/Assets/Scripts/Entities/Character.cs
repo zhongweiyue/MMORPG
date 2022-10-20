@@ -14,6 +14,21 @@ namespace Entities
 
         public NCharacterInfo Info;
         public CharacterDefine Define;
+        public int Id { get { return this.Info.Id; } }
+
+        public bool IsPlayer
+        {
+            get { return this.Info.Type == CharacterType.Player; }//get { return this.Info.Id ==  Models.User.Instance.CurrentCharacter.Id; }
+        }
+        public bool IsCurrentPlayer 
+        {
+            get 
+            {
+                if (!IsPlayer) return false;
+                return this.Info.Id == Models.User.Instance.CurrentCharacter.Id;
+            }
+        }
+
         public string Name
         {
             get
@@ -24,14 +39,11 @@ namespace Entities
                     return this.Define.Name;
             }
         }
-        public bool IsPlayer
-        {
-            get { return this.Info.Id == Models.User.Instance.CurrentCharacter.Id; }
-        }
+       
         public Character(NCharacterInfo info) : base(info.Entity)
         {
             this.Info = info;
-            this.Define = DataManager.Instance.Characters[info.Tid];//根据id拿到角色表对应的角色数据
+            this.Define = DataManager.Instance.Characters[info.ConfigId];//根据id拿到角色表对应的角色数据,tid改为configid
         }
         public void MoveForward()
         {

@@ -58,7 +58,7 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
                 return;
             }
             GameObject go = (GameObject)Instantiate(obj,transform);
-            go.name = "character_" + cha.Info.Id + "_" + cha.Info.Name;
+            go.name = "character_" + cha.Id + "_" + cha.Name;
             CharacterDict[cha.entityId] = go;
             UIWorldElementManager.Instance.AddCharacterNameBar(go.transform, cha);
         }
@@ -73,13 +73,13 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
         if (entityController != null)
         {
             entityController.entity = cha;
-            entityController.isPlayer = cha.IsPlayer;
+            entityController.isPlayer = cha.IsCurrentPlayer;
         }
 
         PlayerInputController playerInputController = go.GetComponent<PlayerInputController>();
         if (playerInputController != null)
         {
-            if (cha.Info.Id == User.Instance.CurrentCharacter.Id)
+            if (cha.IsCurrentPlayer)
             {
                 User.Instance.currentCharacterObject = go;
                 MainPlayerCamera.Instance.player = go;

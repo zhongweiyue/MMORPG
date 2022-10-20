@@ -35,11 +35,10 @@ namespace GameServer.Managers
         {
             Character character = new Character(CharacterType.Player, cha);
             EntityManager.Instance.AddEntity(cha.MapID, character);//通过entityManager，此时character.Id为实体id了
-            character.Info.Id = character.Id;
+            character.Info.EntityId = character.entityId;
             this.Characters[character.Id] = character;
             return character;
         }
-
 
         public void RemoveCharacter(int characterId)
         {
@@ -47,5 +46,13 @@ namespace GameServer.Managers
             EntityManager.Instance.RemoveEntity(cha.Data.MapID, cha);
             this.Characters.Remove(characterId);
         }
+
+        public Character GetCharacter(int characterId) 
+        {
+            Character character = null;
+            this.Characters.TryGetValue(characterId, out character);
+            return character;
+        }
+
     }
 }
