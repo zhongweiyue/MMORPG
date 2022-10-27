@@ -446,7 +446,7 @@ message FriendAddRequest
 	int32 from_id = 1;
 	string from_name = 2;
 	int32 to_id = 3;
-	string fo_name = 4;
+	string to_name = 4;
 }
 
 message FriendAddResponse

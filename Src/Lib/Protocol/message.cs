@@ -854,9 +854,9 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(3, Name = @"to_id")]
         public int ToId { get; set; }
 
-        [global::ProtoBuf.ProtoMember(4, Name = @"fo_name")]
+        [global::ProtoBuf.ProtoMember(4, Name = @"to_name")]
         [global::System.ComponentModel.DefaultValue("")]
-        public string FoName { get; set; } = "";
+        public string ToName { get; set; } = "";
 
     }
 
