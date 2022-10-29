@@ -1,4 +1,6 @@
-﻿using Models;
+﻿using Managers;
+using Models;
+using Services;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -78,7 +80,7 @@ public class UIFriends : UIWindow
         {
             GameObject go = Instantiate(itemPrefab, this.listMain.transform);
             UIFriendItem ui = go.GetComponent<UIFriendItem>();
-            ui.setFriendInfo(item);
+            ui.SetFriendInfo(item);
             this.listMain.AddItem(ui);
         }
     }

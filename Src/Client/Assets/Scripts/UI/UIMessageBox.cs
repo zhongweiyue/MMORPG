@@ -9,7 +9,7 @@ public class UIMessageBox : MonoBehaviour {
     public Image[] icons;
     public Button buttonYes;
     public Button buttonNo;
-    public Button buttonClose;
+    //public Button buttonClose;
 
     public Text buttonYesTitle;
     public Text buttonNoTitle;
