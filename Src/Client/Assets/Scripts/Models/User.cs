@@ -1,4 +1,5 @@
 ﻿using Common.Data;
+using SkillBridge.Message;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace Models
     {
         public MapDefine currentMapData { get; set; }
         public GameObject currentCharacterObject { get; set; }
+        public NTeamInfo TeamInfo { get; set; }
 
         SkillBridge.Message.NUserInfo userInfo;
 

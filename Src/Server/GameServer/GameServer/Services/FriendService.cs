@@ -84,7 +84,7 @@ namespace GameServer.Services
                 {
                     //互相加好友
                     character.FriendManager.AddFriend(requester.Session.Character);
-                    requester.Session.Character.FriendManager.AddFriend(character);
+                    requester.Session.Character.FriendManager.AddFriend(character);//请求加好友的人加上好友
                     DBService.Instance.Save();
                     requester.Session.Response.friendAddRes = response;
                     requester.Session.Response.friendAddRes.Result = Result.Success;
