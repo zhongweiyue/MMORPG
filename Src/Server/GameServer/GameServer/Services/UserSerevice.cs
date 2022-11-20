@@ -154,12 +154,13 @@ namespace GameServer.Services
             sender.Session.Response.gameEnter = new UserGameEnterResponse();
             sender.Session.Response.gameEnter.Result = Result.Success;
             sender.Session.Response.gameEnter.Errormsg = "None";
+
+            sender.Session.Character = character;
+            sender.Session.PostResponser = character;
             //进入成功，发送初始角色信息
             sender.Session.Response.gameEnter.Character = character.Info;
             sender.SendResponse();
 
-            sender.Session.Character = character;
-            sender.Session.PostResponser = character;
             MapManager.Instance[dbchar.MapID].CharacterEnter(sender, character);
         }
 

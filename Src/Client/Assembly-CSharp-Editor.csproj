@@ -69,19 +69,19 @@
     <Compile Include="Assets\BMFont\Editor\ByteReader.cs" />
     <Compile Include="Assets\Editor\MapTools.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>E:/unity project/MMORPG/MyMMO/MMORPG/Src/Client/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>E:/unityproject/MMORPG/MyMMO/MMORPG/Src/Client/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>E:/unity project/MMORPG/MyMMO/MMORPG/Src/Client/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>E:/unityproject/MMORPG/MyMMO/MMORPG/Src/Client/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>E:/unity project/MMORPG/MyMMO/MMORPG/Src/Client/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>E:/unityproject/MMORPG/MyMMO/MMORPG/Src/Client/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>E:/unity project/MMORPG/MyMMO/MMORPG/Src/Client/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>E:/unityproject/MMORPG/MyMMO/MMORPG/Src/Client/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>E:/unity project/MMORPG/MyMMO/MMORPG/Src/Client/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>E:/unityproject/MMORPG/MyMMO/MMORPG/Src/Client/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>D:/unity2018/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -321,34 +321,34 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>E:/unity project/MMORPG/MyMMO/MMORPG/Src/Client/Assets/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.dll</HintPath>
+      <HintPath>E:/unityproject/MMORPG/MyMMO/MMORPG/Src/Client/Assets/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Common">
-      <HintPath>E:/unity project/MMORPG/MyMMO/MMORPG/Src/Client/Assets/References/Common.dll</HintPath>
+      <HintPath>E:/unityproject/MMORPG/MyMMO/MMORPG/Src/Client/Assets/References/Common.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
-      <HintPath>E:/unity project/MMORPG/MyMMO/MMORPG/Src/Client/Assets/References/log4net.dll</HintPath>
+      <HintPath>E:/unityproject/MMORPG/MyMMO/MMORPG/Src/Client/Assets/References/log4net.dll</HintPath>
     </Reference>
     <Reference Include="protobuf-net">
-      <HintPath>E:/unity project/MMORPG/MyMMO/MMORPG/Src/Client/Assets/References/protobuf-net.dll</HintPath>
+      <HintPath>E:/unityproject/MMORPG/MyMMO/MMORPG/Src/Client/Assets/References/protobuf-net.dll</HintPath>
     </Reference>
     <Reference Include="Protocol">
-      <HintPath>E:/unity project/MMORPG/MyMMO/MMORPG/Src/Client/Assets/References/Protocol.dll</HintPath>
+      <HintPath>E:/unityproject/MMORPG/MyMMO/MMORPG/Src/Client/Assets/References/Protocol.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
-      <HintPath>E:/unity project/MMORPG/MyMMO/MMORPG/Src/Client/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
+      <HintPath>E:/unityproject/MMORPG/MyMMO/MMORPG/Src/Client/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>E:/unity project/MMORPG/MyMMO/MMORPG/Src/Client/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>E:/unityproject/MMORPG/MyMMO/MMORPG/Src/Client/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>E:/unity project/MMORPG/MyMMO/MMORPG/Src/Client/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>E:/unityproject/MMORPG/MyMMO/MMORPG/Src/Client/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>E:/unity project/MMORPG/MyMMO/MMORPG/Src/Client/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>E:/unityproject/MMORPG/MyMMO/MMORPG/Src/Client/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
-      <HintPath>E:/unity project/MMORPG/MyMMO/MMORPG/Src/Client/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
+      <HintPath>E:/unityproject/MMORPG/MyMMO/MMORPG/Src/Client/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>D:/unity2018/Editor/Data/MonoBleedingEdge/lib/mono/2.0-api/mscorlib.dll</HintPath>
