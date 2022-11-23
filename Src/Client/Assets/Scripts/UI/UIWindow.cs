@@ -36,6 +36,11 @@ public abstract class UIWindow : MonoBehaviour
         Close(WindowResult.Yes);
     }
 
+    public virtual void OnNoClick()
+    {
+        Close(WindowResult.No);
+    }
+
     void OnMouseDown()
     {
         Debug.LogFormat(name + "clicked");
