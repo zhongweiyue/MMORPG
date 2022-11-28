@@ -1,4 +1,5 @@
-﻿using SkillBridge.Message;
+﻿using Models;
+using SkillBridge.Message;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,9 +12,24 @@ public class GuildManager : Singleton<GuildManager>
         get { return guildInfo != null; }
     }
 
+    public NGuildMemberInfo myMemberInfo;
+
     public void Init(NGuildInfo guild)
     {
         guildInfo = guild;
+        if (guild == null)
+        {
+            myMemberInfo = null;
+            return;
+        }
+        foreach (var member in guild.Members)
+        {
+            if (member.characterId == User.Instance.CurrentCharacter.Id)
+            {
+                myMemberInfo = member;
+                break;
+            }
+        }
     }
 
     public void ShowGuild()
