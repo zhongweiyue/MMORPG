@@ -33,6 +33,7 @@ namespace GameServer.Services
             Character character = sender.Session.Character;
             Log.InfoFormat("OnGuildCreate: :GuildName:{0} character:[{1}] {2}", request.GuildName, character.Id, character.Name);
             sender.Session.Response.guildCreate = new GuildCreateResponse();
+            
             if (character.Guild != null)
             {
                 sender.Session.Response.guildCreate.Result = Result.Failed;

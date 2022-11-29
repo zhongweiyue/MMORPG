@@ -87,9 +87,26 @@ namespace GameServer.Models
         public void Leave(Character member)
         {
             Log.InfoFormat("Leave Guild:{0} {1}", member.Id, member.Info.Name);
-           
+            TGuildMember curGuildMember = Data.Members.FirstOrDefault(c => c.CharacterId == member.Id);
+            DBService.Instance.Entities.TGuildMembers.Remove(curGuildMember);
             member.Guild = null;
-            timestamp = Time.timestamp;
+            member.Data.GuildId = 0;
+            TCharacter dbCharacter = DBService.Instance.Entities.Characters.SingleOrDefault(c => c.ID == member.Id);
+            dbCharacter.GuildId = 0;
+            if (curGuildMember.Title == (int)GuildTitle.President)
+            {
+                foreach (var mem in Data.Members)
+                {
+                    if (mem.Title == (int)GuildTitle.VicePresident)
+                    {
+                        mem.Title = (int)GuildTitle.President;
+                        this.Data.LeaderID = mem.Id;
+                        this.Data.LeaderName = mem.Name;
+                        break;
+                    }
+                }
+            }
+            timestamp = TimeUtil.timestamp;
         }
 
         public void PostProcess(Character from, NetMessageResponse message)
@@ -211,7 +228,16 @@ namespace GameServer.Models
             switch (command)
             {
                 case GuildAdminCommand.Kickout:
-                   //
+                    target.Title = (int)GuildTitle.None;
+                    DBService.Instance.Entities.TGuildMembers.Remove(target);
+                    CharacterManager.Instance.GetCharacter(targetId).Data.GuildId = 0;
+                    DBService.Instance.Entities.Characters.SingleOrDefault(c => c.ID == targetId).GuildId = 0;
+                    var targetMember = SessionManager.Instance.GetSession(targetId);
+                    if (targetMember != null)
+                    {
+                        targetMember.Session.Response.Guildleave = new GuildLeaveResponse();
+                        targetMember.Session.Response.Guildleave.Result = Result.Success;
+                    }
                     break;
                 case GuildAdminCommand.Promote:
                     target.Title = (int)GuildTitle.VicePresident;

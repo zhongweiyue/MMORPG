@@ -64,7 +64,7 @@ namespace Services
             }
             else
             {
-                MessageBox.Show(string.Format("{0} 公会创建失败", response.guildInfo.GuildName), "公会");
+                MessageBox.Show(string.Format("公会创建失败:{0}", response.Errormsg), "公会");
             }
         }
 
@@ -194,7 +194,7 @@ namespace Services
         private void OnGuildAdmin(object sender, GuildAdminResponse message)
         {
             Debug.Log(string.Format( "OnGuildAdmin:{0} {1}",message.Command,message.Result));
-            MessageBox.Show(string.Format("执行操作:{0} 结果:{1} {2}", message.Command, message.Result, message.Errormsg));
+            MessageBox.Show(string.Format("执行操作:{0} 结果:{1} {2}", message.Command.Command, message.Result, message.Errormsg));
         }
     }
 }
