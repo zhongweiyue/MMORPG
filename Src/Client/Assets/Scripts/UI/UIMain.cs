@@ -23,11 +23,11 @@ public class UIMain : MonoSingleton<UIMain>
         avatarLevel.text = User.Instance.CurrentCharacter.Level.ToString();
     }
 
-    public void BackToCharacterSelect()
-    {
-        SceneManager.Instance.LoadScene("CharSelect");
-        UserService.Instance.SendGameLeave();
-    }
+    //public void BackToCharacterSelect()
+    //{
+    //    SceneManager.Instance.LoadScene("CharSelect");
+    //    UserService.Instance.SendGameLeave();
+    //}
 
     public void OnClickTest()
     {
@@ -80,7 +80,7 @@ public class UIMain : MonoSingleton<UIMain>
 
     public void OnClickSetting()
     {
-
+        UIManager.Instance.Show<UISetting>();
     }
 
     public void OnClickSkill()
