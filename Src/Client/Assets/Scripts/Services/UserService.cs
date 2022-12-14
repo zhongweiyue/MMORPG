@@ -180,6 +180,7 @@ namespace Services
         public void SendGameEnter(int characterId)
         {
             Debug.LogFormat("UserGameEnterRequest::characterId :{0}", characterId);
+            ChatManager.Instance.Init();//进入游戏前初始化聊天管理器
             NetMessage message = new NetMessage();
             message.Request = new NetMessageRequest();
             message.Request.gameEnter = new UserGameEnterRequest();

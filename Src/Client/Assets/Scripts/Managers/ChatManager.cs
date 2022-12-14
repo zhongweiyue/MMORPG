@@ -1,4 +1,5 @@
 ﻿using Models;
+using Services;
 using SkillBridge.Message;
 using System;
 using System.Collections;
@@ -39,7 +40,14 @@ namespace Managers
                 OnChat();
         }
 
-        public List<ChatMessage> Messages = new List<ChatMessage>();
+        public List<ChatMessage>[] Messages = new List<ChatMessage>[6] {
+        new List<ChatMessage>(),
+        new List<ChatMessage>(),
+        new List<ChatMessage>(),
+        new List<ChatMessage>(),
+        new List<ChatMessage>(),
+        new List<ChatMessage>(),
+        };
         public LocalChannel displayChannel;
         public LocalChannel sendChannel;
         public int PrivateID = 0;
@@ -68,16 +76,30 @@ namespace Managers
 
         public Action OnChat { get; internal set; }
 
-        public void Init() { }
+        public void Init() 
+        {
+            foreach (var messages in Messages)
+            {
+                messages.Clear();
+            }
+        }
 
         public void SendChat(string content, int toId = 0, string toName = "") 
         {
-            this.Messages.Add(new ChatMessage() {
-                Channel = ChatChannel.Local,
-                Message = content,
-                FromId = User.Instance.CurrentCharacter.Id,
-                FromName = User.Instance.CurrentCharacter.Name
-            });
+            ChatService.Instance.SendChat(this.SendChannel, content, toId, toName);
+        }
+
+        internal void AddMessages(ChatChannel channel, List<ChatMessage> messages) 
+        {
+            for (int ch = 0; ch < 6; ch++) 
+            {
+                if ((this.ChannelFilter[ch] & channel) == channel) 
+                {
+                    this.Messages[ch].AddRange(messages);
+                }
+            }
+            if (this.OnChat != null)
+                this.OnChat();
         }
 
         public bool SetSendChannel(LocalChannel channel) 
@@ -105,7 +127,7 @@ namespace Managers
 
         public void AddSystemMessage(string message, string from = "") 
         {
-            this.Messages.Add(new ChatMessage()
+            this.Messages[(int)LocalChannel.All].Add(new ChatMessage()
             {
                 Channel = ChatChannel.System,
                 Message = message,
@@ -118,7 +140,7 @@ namespace Managers
         public string GetCurrentMessages() 
         {
             StringBuilder sb = new StringBuilder();
-            foreach (var message in this.Messages)
+            foreach (var message in this.Messages[(int)displayChannel])
             {
                 sb.AppendLine(FormatMessage(message));
             }

@@ -90,5 +90,18 @@ public class UIChat : MonoBehaviour
     {
         ChatManager.Instance.SendChat(content, ChatManager.Instance.PrivateID, ChatManager.Instance.PrivateName);
     }
-
+    public void OnSendChannelChanged()
+    {
+        int idx = channelSelect.value;
+        if (ChatManager.Instance.sendChannel == (ChatManager.LocalChannel)(idx + 1))//发送频道没有综合，是显示频道索引+1
+            return;
+        if (!ChatManager.Instance.SetSendChannel((ChatManager.LocalChannel)idx + 1))
+        {
+            this.channelSelect.value = (int)ChatManager.Instance.sendChannel - 1;
+        }
+        else
+        {
+            RefreshUI();
+        }
+    }
 }
