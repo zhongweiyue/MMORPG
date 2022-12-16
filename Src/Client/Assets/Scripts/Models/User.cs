@@ -11,7 +11,7 @@ namespace Models
     class User : Singleton<User>
     {
         public MapDefine currentMapData { get; set; }
-        public GameObject currentCharacterObject { get; set; }
+        public PlayerInputController currentCharacterObject { get; set; }
         public NTeamInfo TeamInfo { get; set; }
 
         SkillBridge.Message.NUserInfo userInfo;
@@ -33,6 +33,21 @@ namespace Models
         public void AddGold(int gold) 
         {
             this.CurrentCharacter.Gold += gold;
+        }
+
+        public int CurrentRide = 0;
+        internal void Ride(int id) 
+        {
+            if (CurrentRide != id)
+            {
+                CurrentRide = id;
+                currentCharacterObject.sendEntityEvent(EntityEvent.Ride, CurrentRide);
+            }
+            else 
+            {
+                CurrentRide = 0;
+                currentCharacterObject.sendEntityEvent(EntityEvent.Ride, 0);
+            }
         }
     }
 }

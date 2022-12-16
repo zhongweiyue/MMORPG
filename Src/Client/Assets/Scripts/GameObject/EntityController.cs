@@ -25,6 +25,10 @@ public class EntityController : MonoBehaviour,IEntityNotify
     public float jumpPower = 3.0f;
     public bool isPlayer = false;
 
+    public RideController rideController;
+    private int currentRide = 0;
+    public Transform rideBone;
+
     private void Start()
     {
         if (entity != null)
@@ -70,12 +74,10 @@ public class EntityController : MonoBehaviour,IEntityNotify
         }
     }
 
-    public void OnEntityEvent(EntityEvent entityEvent) 
+    public void OnEntityEvent(EntityEvent entityEvent,int param) 
     {
         switch (entityEvent)
         {
-            case EntityEvent.None:
-                break;
             case EntityEvent.Idle:
                 anim.SetBool("Move", false);
                 anim.SetTrigger("Idle");
@@ -89,9 +91,41 @@ public class EntityController : MonoBehaviour,IEntityNotify
             case EntityEvent.Jump:
                 anim.SetTrigger("Jump");
                 break;
-            default:
+            case EntityEvent.Ride:
+                this.Ride(param);
                 break;
         }
+        if (this.rideController != null) this.rideController.OnEntityEvent(entityEvent, param);
+    }
+
+    public void Ride(int rideId) 
+    {
+        if (currentRide == rideId) return;
+        currentRide = rideId;
+        if (rideId > 0)
+        {
+            rideController = GameObjectManager.Instance.LoadRide(rideId, transform);
+        }
+        else 
+        {
+            Destroy(rideController.gameObject);
+            rideController = null;
+        }
+        if (rideController == null)
+        {
+            anim.transform.localPosition = Vector3.zero;
+            anim.SetLayerWeight(1, 0);
+        }
+        else 
+        {
+            rideController.SetRider(this);
+            anim.SetLayerWeight(1, 1);
+        }
+    }
+
+    public void SetRidePosition(Vector3 position) //position是坐骑的骨点
+    {
+        anim.transform.position = position + (anim.transform.position - rideBone.position);
     }
 
     public void OnEntityRemoved()

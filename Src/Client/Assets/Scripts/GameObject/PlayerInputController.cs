@@ -44,7 +44,7 @@ public class PlayerInputController : MonoBehaviour
     private void FixedUpdate()
     {
         if (character == null) return;
-        if (InputManager.Instance.IsInputMode) return;
+        if (InputManager.Instance!=null&&InputManager.Instance.IsInputMode) return;
         float v = Input.GetAxis("Vertical");
         if (v > 0.01f)
         {
@@ -111,10 +111,10 @@ public class PlayerInputController : MonoBehaviour
         transform.position = rig.transform.position;
     }
 
-    private void sendEntityEvent(EntityEvent entityEvent)
+    public void sendEntityEvent(EntityEvent entityEvent,int param = 0)
     {
         if (entityController != null)
-            entityController.OnEntityEvent(entityEvent);
-        MapService.Instance.SendMapEntitySync(entityEvent, character.EntityData);
+            entityController.OnEntityEvent(entityEvent,param);
+        MapService.Instance.SendMapEntitySync(entityEvent, character.EntityData,param);
     }
 }
