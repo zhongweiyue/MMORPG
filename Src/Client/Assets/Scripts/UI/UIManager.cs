@@ -29,12 +29,14 @@ public class UIManager : Singleton<UIManager>
         UIResourcesDict.Add(typeof(UIGuildApplyList), new UIElement() { Resources = "UI/Guild/UIGuildApplyList", Cache = false });
         UIResourcesDict.Add(typeof(UIPopCharMenu), new UIElement() { Resources = "UI/Char/UIPopCharMenu", Cache = false });
         UIResourcesDict.Add(typeof(UIRide), new UIElement() { Resources = "UI/Ride/UIRide", Cache = false });
+        UIResourcesDict.Add(typeof(UISystemConfig), new UIElement() { Resources = "UI/UISystemConfig", Cache = false });
     }
 
     ~UIManager() { }
 
     public T Show<T>()
     {
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Win_Open);
         Type type = typeof(T);
         if (UIResourcesDict.ContainsKey(type))
         {

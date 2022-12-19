@@ -21,6 +21,7 @@ public class UILogin : MonoBehaviour
         if (result == Result.Success)
         {
             SceneManager.Instance.LoadScene("CharSelect");
+            SoundManager.Instance.PlayMusic(SoundDefine.Music_Select);
         }
         else
         {
@@ -40,6 +41,7 @@ public class UILogin : MonoBehaviour
             MessageBox.Show(string.Format("请输入密码"));
             return;
         }
+        SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Click);
         UserService.Instance.SendLogin(this.username.text,this.password.text);
     }
 

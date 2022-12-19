@@ -71,6 +71,7 @@ public class MapService : Singleton<MapService>, IDisposable
             MapDefine map = DataManager.Instance.Maps[mapId];
             User.Instance.currentMapData = map;
             SceneManager.Instance.LoadScene(map.Resource);
+            SoundManager.Instance.PlayMusic(map.Music);
         }
         else
         {
