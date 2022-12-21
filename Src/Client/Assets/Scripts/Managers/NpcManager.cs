@@ -8,6 +8,7 @@ public class NpcManager : Singleton<NpcManager>
 {
     public delegate bool NpcActionHandler(NpcDefine npc);
     Dictionary<NpcFunction, NpcActionHandler> eventNpcDict = new Dictionary<NpcFunction, NpcActionHandler>();
+    Dictionary<int, Vector3> npcPositions = new Dictionary<int, Vector3>();
 
     public void RegisterNpcEvent(NpcFunction function, NpcActionHandler action)
     {
@@ -70,5 +71,14 @@ public class NpcManager : Singleton<NpcManager>
             return false;
         }
         return eventNpcDict[npc.Function](npc);
+    }
+
+    internal void UpdateNpcPosition(int npc, Vector3 pos) 
+    {
+        this.npcPositions[npc] = pos;
+    }
+    internal Vector3 GetNpcPosition(int npc) 
+    {
+        return this.npcPositions[npc];
     }
 }
