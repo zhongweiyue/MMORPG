@@ -1,10 +1,11 @@
-﻿using Models;
+﻿using Common.Data;
+using Models;
 using SkillBridge.Message;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using Managers;
 public class UIQuestInfo : MonoBehaviour
 {
     public Text title;
@@ -19,7 +20,7 @@ public class UIQuestInfo : MonoBehaviour
 
     private void Start()
     {
-        
+
     }
     public void SetQuestInfo(Quest quest)
     {
@@ -44,13 +45,13 @@ public class UIQuestInfo : MonoBehaviour
 
         if (quest.Info == null)
         {
-            this.npc = quest.Define.AcceptNPC;
+            NavManager.Instance.NavTargetNpc = quest.Define.AcceptNPC;
         }
         else if (quest.Info.Status == QuestStatus.Complated) 
         {
-            this.npc = quest.Define.SubmitNPC;
+            NavManager.Instance.NavTargetNpc = quest.Define.SubmitNPC;
         }
-        this.navButton.gameObject.SetActive(this.npc > 0);
+        //this.navButton.gameObject.SetActive(NavManager.Instance.NavTargetNpc > 0);
     }
     private void Update()
     {
@@ -63,7 +64,9 @@ public class UIQuestInfo : MonoBehaviour
 
     public void OnClickNav() 
     {
-        Vector3 pos = NpcManager.Instance.GetNpcPosition(this.npc);
+        Vector3 pos = NavManager.Instance.GetNpcPos(NavManager.Instance.NavTargetNpc);
+        NavManager.Instance.NavState = true;
+       // NavManager.Instance.NavTargetNpc = npc;
         User.Instance.currentCharacterObject.StartNav(pos);
         UIManager.Instance.Close<UIQuestSystem>();
     }

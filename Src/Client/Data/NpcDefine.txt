@@ -3,7 +3,8 @@
     "ID": 1,
     "Name": "莉莉丝",
     "Description": "任务NPC",
-    "Type": "Task"
+    "Type": "Task",
+    "Map": 2
   },
   "2": {
     "ID": 2,
@@ -11,14 +12,16 @@
     "Description": "杂货商人",
     "Type": "Functional",
     "Function": "InvokeShop",
-    "Param": 1
+    "Param": 1,
+    "Map": 1
   },
   "3": {
     "ID": 3,
     "Name": "埃布尔",
     "Description": "副本NPC",
     "Type": "Functional",
-    "Function": "InvokeInsrance"
+    "Function": "InvokeInsrance",
+    "Map": 1
   },
   "4": {
     "ID": 4,
@@ -26,7 +29,8 @@
     "Description": "装备NPC",
     "Type": "Functional",
     "Function": "InvokeShop",
-    "Param": 2
+    "Param": 2,
+    "Map": 1
   },
   "5": {
     "ID": 5,
@@ -34,6 +38,7 @@
     "Description": "坐骑NPC",
     "Type": "Functional",
     "Function": "InvokeShop",
-    "Param": 3
+    "Param": 3,
+    "Map": 1
   }
 }

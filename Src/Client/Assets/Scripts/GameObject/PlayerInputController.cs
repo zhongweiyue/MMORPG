@@ -20,7 +20,6 @@ public class PlayerInputController : MonoBehaviour
 
     private NavMeshAgent agent;
     private bool autoNav = false;
-
     private void Start()
     {
         state = SkillBridge.Message.CharacterState.Idle;
@@ -49,10 +48,9 @@ public class PlayerInputController : MonoBehaviour
             agent.stoppingDistance = 0.3f;
         }
     }
-
     public void StartNav(Vector3 target) 
-    {
-        StartCoroutine(BeginNav(target));
+    {     
+       StartCoroutine(BeginNav(target));
     }
 
     IEnumerator BeginNav(Vector3 target) 
@@ -60,6 +58,7 @@ public class PlayerInputController : MonoBehaviour
         agent.SetDestination(target);
         yield return null;
         autoNav = true;
+        NavManager.Instance.NavState = true;
         if (state != CharacterState.Move) 
         {
             state = CharacterState.Move;
@@ -72,7 +71,11 @@ public class PlayerInputController : MonoBehaviour
     public void StopNav() 
     {
         autoNav = false;
-        agent.ResetPath();
+        if (agent.enabled) 
+        {
+            NavManager.Instance.NavState = false;
+            agent.ResetPath();
+        }
         if (state != CharacterState.Idle) 
         {
             state = CharacterState.Idle;
@@ -85,7 +88,7 @@ public class PlayerInputController : MonoBehaviour
 
     public void NavMove() 
     {
-        if (agent.pathPending) return;//正在寻路
+        if (agent.pathPending) return;//正在计算寻路，寻路数据还没准备好
         if (agent.pathStatus == NavMeshPathStatus.PathInvalid) //寻路失败(路被堵死)
         {
             StopNav();

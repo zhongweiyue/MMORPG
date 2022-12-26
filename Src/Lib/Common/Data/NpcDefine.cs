@@ -28,6 +28,8 @@ namespace Common.Data
         public NpcType Type { get; set; }
         public NpcFunction Function { get; set; }
         public int Param { get; set; }
+
+        public int Map { get; set; }
     }
 }
 
